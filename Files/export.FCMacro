@@ -1,0 +1,76 @@
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtGui
+import os
+import Mesh
+import MeshPart
+
+fileName = App.ActiveDocument.FileName
+obj = App.ActiveDocument.Objects
+
+doc = App.ActiveDocument
+
+dirPath = os.path.dirname(fileName);
+print(f"dir path: {dirPath}");
+#selection = Gui.Selection.getSelection()
+#print(selection);
+
+def merge(n, first):
+    dialog = QtGui.QMessageBox()
+    dialog.setWindowTitle(f"Merge")
+    dialog.setText(f"Merge together {n} parts into one file: {first.Label}")
+
+    dialog.setStandardButtons(QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+    dialog.setDefaultButton(QtGui.QMessageBox.No)
+
+    user_response = dialog.exec_()
+
+    if user_response == QtGui.QMessageBox.Yes:
+        return True
+    else:
+        return False
+
+def toMesh(body, relative):
+    mesh = doc.addObject("Mesh::Feature","Mesh");
+    # AngularDeflection=0.523599
+    mesh.Mesh = MeshPart.meshFromShape(Shape=body.Shape, LinearDeflection=0.1, AngularDeflection=0.523599,Relative=relative);
+    mesh.Label = f"{body.Label}Mesh";
+
+    return mesh;
+
+def export(mesh, label):
+    path = os.path.join(dirPath, label + ".stl");
+    
+    if(os.path.exists(path)):
+        os.remove(path);
+
+    Mesh.export(mesh, path);
+    print(f"exported  {path}");
+    for m in mesh:    
+        doc.removeObject(m.Name);
+
+if(doc and doc.Objects):
+    selection = Gui.Selection.getSelection()
+
+# Check if anything is selected
+toExport = [];
+if(selection):
+    for obj in selection:
+        # obj.isDerivedFrom("App::Part")
+        if(obj.isDerivedFrom("PartDesign::Body")):
+            toExport.append(obj);
+
+print(f"to export: {toExport}");
+
+if(1 < len(toExport)and merge(len(toExport), toExport[0])):
+    mesh = [];
+    for item in toExport:
+        mesh.append(toMesh(item, False));
+    export(mesh, toExport[0].Label);
+else:
+    for item in toExport:
+        print(f"exporting: {item.Label} {item.Name}");
+        mesh = []
+        mesh.append(toMesh(item, True));
+        print(mesh);
+        export(mesh, item.Label);

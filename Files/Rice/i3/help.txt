@@ -1,0 +1,10 @@
+Mod: Win
+
+Make new screenshot         $mod+Print
+Copy part of screen         $mod+Shift+s
+
+Copy from primary           $mod+z
+
+Toggle mouse wrapping       $mod+Shift+n
+Toggle opacity              $mod+Shift+c
+

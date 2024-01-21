@@ -1,0 +1,15 @@
+{
+    "array": [{
+        "s": "~/Blender/Addons/createSpiral.py",
+        "d": "./Files/createSpiral.py"
+    },
+    {
+        "s": "~/.local/share/FreeCAD/Macro/export.FCMacro",
+        "d": "./Files/export.FCMacro"
+    },
+    {
+        "s": "~/Programming/JavaScript/TestCaseGenerator",
+        "d": "./Files/"
+    }
+    ]
+}
