@@ -2,11 +2,13 @@ import * as array from "./array.mjs";
 import * as random from "./random.mjs";
 import * as binaryTree from "./binaryTree.mjs";
 import * as string from "./string.mjs";
+import * as design from "./design.mjs";
 
 Object.assign(globalThis, array);
 Object.assign(globalThis, random);
 Object.assign(globalThis, binaryTree);
 Object.assign(globalThis, string);
+Object.assign(globalThis, design);
 
 String.prototype.str = function(){
     return `"${this}"`;
@@ -14,14 +16,6 @@ String.prototype.str = function(){
 
 Number.prototype.str = function(){
     return `"${this}"`;
-}
-
-Array.prototype.adjacentPairs = function(){
-    const pairs = [];
-    for(let i = 1; i < this.length; i++){
-        pairs.push([this[i-1], this[i]]);
-    }
-    return pairs;
 }
 
 // [...Array(100).keys()].fromRandom(100);
@@ -70,9 +64,33 @@ function main(){
     // const min =  1;
     // const max =  10000;
     // const max =  1001;
-    // const size = r(10000,100000);
+    // const size = r(10000,50000);
+    // const d = new Design([
+    //     () => { return "n"; }, () => { return r(1, 500).toString();}, () => { return set.fromRandom(2).join("");}
+    // ]);
+
     const f = () => {
-        l(randomArray(0, 10001, 100000).str());
+        // const v = r(0,100);
+        // l(fromRegEx(/[0-9]/).fromRandom(v).join("").str());
+        // const tree = arrayFromTo(1, 10000).shuffle().toBinaryTree();
+        // l(tree.binaryTreeDescription().str());
+        // l(fromRegEx(/[0-9]/).random.join("").str());
+        // l(d.generateLen(50000).str());
+        // l(randomArrayFunc(0, 100000, (index, val) => {return index == val;}, 100000).str());
+        // l(fromRegEx(/[a-z ]/).fromRandom(1000).join("").str());
+        // const max = 2000;
+        // const s1 = r(450, 500);
+        // l(randomArray(1, max, s1).str());
+        // const s2 = r(450, 500);
+        // l(randomArray(1, 1000000001, 100).removeDuplicates().str());
+        const array = randomArray(-500, 500, 400);
+        const table = array.sumTable();
+        if(table[0][1] == 1){
+            l(array.sortArray().str());
+            l(table[0][0]);
+        }
+        // l(randomArray(0, 10, size).str());
+        // l(r(0, 100001));
         // l(randomMatrix(1,1, 20, 20).str());
         // const m = r(20,200);
         // const n = r(20,200);

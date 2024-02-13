@@ -12,6 +12,49 @@ Array.prototype.fromRandom = function(len){
     });
 }
 
+Array.prototype.addBefore = function(array){
+    return [...array, ...this];
+}
+
+Array.prototype.addAfter = function(array){
+    return [...this, ...array];
+}
+
+Array.prototype.add = function(item){
+    this.push(item);
+    return this;
+}
+
+Array.prototype.chunkify = function(n){
+    const arr = [];
+    
+    for(let i = 0; i < this.length; i += n){
+        arr.push(this.slice(i, i + n));
+    }
+
+    return arr;
+}
+
+Array.prototype.sumTable = function(){
+    const size = this.length;
+    const table = new Map();
+    for(let i = 0; i < size - 1; i++){
+        for(let j = i + 1; j < size; j++){
+            const sum = this[i] + this[j];
+            if(!table.has(sum)){
+                table.set(sum, {val: 1});
+            }
+            else{
+                table.get(sum).val++;
+            }
+        }
+    }
+
+    const array = Array.from(table, ([key, val]) => ([key, val.val]));
+    array.sort((a, b) => a[1] - b[1]);
+    return array;
+}
+
 export function newArray(value, length){
     return Array.from({length: length}, () => value);
 }
@@ -76,4 +119,12 @@ Array.prototype.rotate = function(k){
 
 Array.prototype.cut = function(size){
     return this.splice(0, size);
+}
+
+Array.prototype.adjacentPairs = function(){
+    const pairs = [];
+    for(let i = 1; i < this.length; i++){
+        pairs.push([this[i-1], this[i]]);
+    }
+    return pairs;
 }

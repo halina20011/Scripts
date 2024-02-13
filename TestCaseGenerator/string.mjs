@@ -32,8 +32,7 @@ export function generateSymbolList(start, end){
     return symbolList;
 }
 
-
-String.prototype.cost = function(){
+String.prototype.charCodeCost = function(){
     let cost = 0;
     for(let i = 0; i < this.length; i++){
         cost += this.charCodeAt(i) + 1;

@@ -73,6 +73,37 @@ export function buildShort(array){
     return tree;
 }
 
+export function buildBinaryTree(array, index = 0){
+    if(index < array.length){
+        const node = new Node(array[index]);
+        node.left = buildBinaryTree(array, index * 2 + 1);
+        node.right = buildBinaryTree(array, index * 2 + 2);
+        return node;
+    }
+
+    return null;
+}
+
+Array.prototype.toBinaryTree = function(){
+    return buildBinaryTree(this, 0);
+}
+
+Node.prototype.binaryTreeDescription = function(array = []){
+    if(this){
+        if(this.left){
+            array.push([this.data, this.left.data, 1]);
+            this.left.binaryTreeDescription(array);
+        }
+
+        if(this.right){
+            array.push([this.data, this.right.data, 0]);
+            this.right.binaryTreeDescription(array);
+        }
+    }
+
+    return array;
+}
+
 export function createTreeArrayShort(tree){
     const stack = [];
     const array = [];
@@ -106,4 +137,3 @@ export function createTreeArrayShort(tree){
 export function fullNodeCount(height){
     return Math.pow(2, height + 1) - 1;
 }
-

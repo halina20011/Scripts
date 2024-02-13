@@ -4,6 +4,16 @@ export function randomArray(min, max, len){
     });
 }
 
+export function randomArrayFunc(min, max, func, len){
+    return Array.from({length: len}, (_v, i) => {
+        let v = Math.floor(Math.random() * (max - min) + min);
+        while(func(i, v)){
+            v = Math.floor(Math.random() * (max - min) + min);
+        }
+        return v;
+    });
+}
+
 Array.prototype.shuffle = function(){
     for(let i = 0; i < this.length; i++){
         const rIndex = r(0, this.length);
@@ -14,7 +24,6 @@ Array.prototype.shuffle = function(){
 
     return this;
 }
-
 
 export function randomMatrix(min, max, m, n){
     const rand = () => {
@@ -85,6 +94,12 @@ export function randomString(len, options){
     }
 
     return str;
+}
+
+Array.prototype.randomFromMatrix = function(n, m){
+    const size = n * m;
+    const arr = this.fromRandom(size);
+    return arr.chunkify(n).map(i => i.join(""));
 }
 
 export function randomBinMatrix(n, m){

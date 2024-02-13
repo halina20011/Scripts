@@ -9,7 +9,15 @@
     },
     {
         "s": "~/Programming/JavaScript/TestCaseGenerator",
-        "d": "./Files/"
+        "d": "./"
+    },
+    {
+        "s": "~/Programming/JavaScript/lCTestInfo.js",
+        "d": "./Files"
+    },
+    {
+        "s": "~/Blender/Models/GetModelInfo/getModelInfo.py",
+        "d": "./Files"
     }
     ]
 }
