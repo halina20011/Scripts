@@ -6,6 +6,21 @@ Array.prototype.itemStr = function(){
     return this.map(item => JSON.stringify(item)).join("\n");
 }
 
+Array.prototype.repeat = function(size){
+    if(this.length <= 0){
+        return [];
+    }
+
+    const res = [];
+    while(res.length < size){
+        for(let i = 0; i < this.length && res.length < size; i++){
+            res.push(this[i]);
+        }
+    }
+
+    return res;
+}
+
 Array.prototype.fromRandom = function(len){
     return Array.from({length: len}, () => {
         return this[Math.floor(Math.random() * this.length)];

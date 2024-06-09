@@ -3,12 +3,14 @@ import * as random from "./random.mjs";
 import * as binaryTree from "./binaryTree.mjs";
 import * as string from "./string.mjs";
 import * as design from "./design.mjs";
+import * as graph from "./graph.mjs";
 
 Object.assign(globalThis, array);
 Object.assign(globalThis, random);
 Object.assign(globalThis, binaryTree);
 Object.assign(globalThis, string);
 Object.assign(globalThis, design);
+Object.assign(globalThis, graph);
 
 String.prototype.str = function(){
     return `"${this}"`;
@@ -19,7 +21,6 @@ Number.prototype.str = function(){
 }
 
 // [...Array(100).keys()].fromRandom(100);
-
 
 const multipleOf = (n, len) => {
     return Array.from({length: len}, (_,i) => (i * n));
@@ -59,6 +60,22 @@ function run(count, f){
 
 const l = console.log;
 
+function pairArr(n){
+    const dArray = Array.from({length:n*2}, (_, i) => Math.floor(i / 2) * 2 + 1);
+    // for(let i = 0; i <= n; i++){
+    // r(0, n + 1);
+    // for(let i = 0; i <= n; i++){
+    // }
+    for(let i = 0 ; i<8;i++){
+        const before = i * 2;
+        // const after = n * 2 - before;
+        const beforeArr = dArray.slice(0, before);
+        const newArr = [...beforeArr, i * 2, ...dArray.slice(before)];
+        l(newArr.str());
+
+    }
+}
+
 // node usefullFunctions.js | tee /dev/tty | xclip -sel clip
 function main(){
     // const min =  1;
@@ -68,8 +85,27 @@ function main(){
     // const d = new Design([
     //     () => { return "n"; }, () => { return r(1, 500).toString();}, () => { return set.fromRandom(2).join("");}
     // ]);
-
+    // l(array.newArray(1000000000, 100000).str());
+    // return;
+    // l(1);
+    // l(Array.from({length: 100000}, (_v, i) => {return [i, 500000]}).str());
+    // l(2);
+    // l(Array.from({length: 100000}, (_v, i) => {return [i, 500000]}).str());
+    // l([1, 1000000].repeat(100000/2).str());
+    // l(1000000000);
+    // const s = 100000 / 2 - 1;
+    // pairArr(s, 5);
+    // let i = 0;    
+    for(let i = 0; i < 16; i++){
+        l(r(0,2));
+    }
     const f = () => {
+        // l(randomMatrix(0, 101, 50, 50).str());
+        // pairArr(i++);
+        // l(randomArray(1, 100, 200).str());
+        // l(r(1, 99));
+        // l(randomArray(0, 100, 50).adjacentPairs().adjacencyList(1, 5).str());
+        // l(randomArray(1, 5, 10000).str());
         // const v = r(0,100);
         // l(fromRegEx(/[0-9]/).fromRandom(v).join("").str());
         // const tree = arrayFromTo(1, 10000).shuffle().toBinaryTree();
@@ -77,18 +113,20 @@ function main(){
         // l(fromRegEx(/[0-9]/).random.join("").str());
         // l(d.generateLen(50000).str());
         // l(randomArrayFunc(0, 100000, (index, val) => {return index == val;}, 100000).str());
-        // l(fromRegEx(/[a-z ]/).fromRandom(1000).join("").str());
+        // l(fromRegEx(/[ACGT]/).fromRandom(100000).join("").str());
+        // l(randomArray(1, 1000000001, 100000).str());
         // const max = 2000;
         // const s1 = r(450, 500);
         // l(randomArray(1, max, s1).str());
         // const s2 = r(450, 500);
-        // l(randomArray(1, 1000000001, 100).removeDuplicates().str());
-        const array = randomArray(-500, 500, 400);
-        const table = array.sumTable();
-        if(table[0][1] == 1){
-            l(array.sortArray().str());
-            l(table[0][0]);
-        }
+        // l(randomArray(1, 1000000001, 100000).str());
+        // l(r(1000, 100000));
+        // const array = randomArray(-500, 500, 400);
+        // const table = array.sumTable();
+        // if(table[0][1] == 1){
+        //     l(array.sortArray().str());
+        //     l(table[0][0]);
+        // }
         // l(randomArray(0, 10, size).str());
         // l(r(0, 100001));
         // l(randomMatrix(1,1, 20, 20).str());

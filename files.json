@@ -18,6 +18,10 @@
     {
         "s": "~/Blender/Models/GetModelInfo/getModelInfo.py",
         "d": "./Files"
+    },
+    {
+        "s": "~/Programming/Python/Kicad/MillHoles",
+        "d": "./MillHoles"
     }
     ]
 }
