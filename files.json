@@ -22,6 +22,10 @@
     {
         "s": "~/Programming/Python/Kicad/MillHoles",
         "d": "./MillHoles"
+    },
+    {
+        "s": "~/.local/share/cura/5.8/scripts/MarlinProbeBoundingBox.py",
+        "d": "./Files"
     }
     ]
 }

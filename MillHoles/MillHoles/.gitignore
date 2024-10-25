@@ -1,0 +1,4 @@
+**/*.gcode
+**/*.json
+**/*.probe
+**/__pycache__
