@@ -26,6 +26,14 @@
     {
         "s": "~/.local/share/cura/5.8/scripts/MarlinProbeBoundingBox.py",
         "d": "./Files"
+    },
+    {
+        "s": "~/Tools/Printing/Firmware/Marlin/Marlin/Configuration.h",
+        "d": "./Files"
+    },
+    {
+        "s": "~/Tools/Printing/Firmware/Marlin/Marlin/Configuration_adv.h",
+        "d": "./Files"
     }
     ]
 }
